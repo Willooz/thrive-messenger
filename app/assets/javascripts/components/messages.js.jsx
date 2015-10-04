@@ -26,6 +26,11 @@ var Messages = React.createClass({
     this.setState({ messages: messages });
   },
 
+  toggleMenu: function(type) {
+
+
+  },
+
   render: function() {
     return(
       <div className='records'>
@@ -48,6 +53,12 @@ var Messages = React.createClass({
         </table>
         <MessageCounter count={this.counter()} />
         <MessageForm user={this.state.user} handleNewMessage={this.addMessage} />
+        <ul className="nav nav-pills">
+          <MessageMenu type='text' active='false' handleNewClick={this.toggleMenu} />
+          <MessageMenu type='goals' active='false' />
+          <MessageMenu type='praise' active='false' />
+          <MessageMenu type='advice' active='false' />
+        </ul>
       </div>
     );
   }
