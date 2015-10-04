@@ -1,10 +1,7 @@
 var MessageForm = React.createClass({
 
   getInitialState: function() {
-    return {
-      author: '',
-      text: ''
-    };
+    return { text: '' };
   },
 
   handleChange: function(event) {
@@ -14,7 +11,7 @@ var MessageForm = React.createClass({
   handleSubmit: function(event) {
     event.preventDefault();
     $.post('',
-      { message: this.state },
+      { message: { user: this.props.user.id, text: this.state.text } },
       function(data) {
         this.props.handleNewMessage(data);
         this.setState(this.getInitialState());
@@ -32,7 +29,7 @@ var MessageForm = React.createClass({
       <form className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group'>
           <input type='text' className='form-control'
-            placeholder='Type here...' name='text'
+            placeholder='Type here...'
             value={this.state.text} onChange={this.handleChange}>
           </input>
         </div>

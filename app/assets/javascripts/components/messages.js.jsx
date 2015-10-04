@@ -23,7 +23,7 @@ var Messages = React.createClass({
   deleteMessage: function(message) {
     var index = this.state.messages.indexOf(message);
     var messages = React.addons.update(this.state.messages, { $splice: [[index, 1]] });
-    this.replaceState({ messages: messages });
+    this.setState({ messages: messages });
   },
 
   render: function() {
@@ -35,7 +35,7 @@ var Messages = React.createClass({
             <tr>
               <th>Author</th>
               <th>Text</th>
-              <th>Date</th>
+              <th>Time</th>
               <th>Delivery</th>
               <th>Action</th>
             </tr>
@@ -47,7 +47,7 @@ var Messages = React.createClass({
           </tbody>
         </table>
         <MessageCounter count={this.counter()} />
-        <MessageForm handleNewMessage={this.addMessage} />
+        <MessageForm user={this.state.user} handleNewMessage={this.addMessage} />
       </div>
     );
   }
